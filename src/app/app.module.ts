@@ -11,12 +11,14 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Pro } from '@ionic/pro';
- // init Ionic Pro for monitiring errors
+import { Alert } from 'ionic-angular/components/alert/alert';
+
 const IonicPro = Pro.init('f9002139', {
   appVersion: "3.1.8"
 });
-// Catching exception
-IonicPro.getApp().monitoring.exception(new Error('error'))
+console.log(IonicPro)
+
+ // init Ionic Pro for monitiring errors
 
 
 @NgModule({
