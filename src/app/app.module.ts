@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+ // Import Pages
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -19,7 +20,6 @@ const IonicPro = Pro.init('f9002139', {
 console.log(IonicPro)
 
  // init Ionic Pro for monitiring errors
-
 
 @NgModule({
   declarations: [
