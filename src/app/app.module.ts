@@ -2,6 +2,8 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { Geolocation } from '@ionic-native/geolocation'
+import { Camera } from '@ionic-native/camera';
 
  // Import Pages
 import { AboutPage } from '../pages/about/about';
@@ -14,6 +16,7 @@ import { TestPage } from '../pages/test/test';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Pro } from '@ionic/pro';
+import { CameraPreview } from '@ionic-native/camera-preview';
 
 
 const IonicPro = Pro.init('f9002139', {
@@ -50,6 +53,9 @@ console.log(IonicPro)
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
+    Camera,
+    CameraPreview,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

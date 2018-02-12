@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FeedPage } from '../feed/feed';
 import { TestPage } from '../test/test';
-import { AboutPage } from '../about/about';
 import { HomePage } from '../home/home';
   // remove native page imports for created
 // import { ContactPage } from '../contact/contact';

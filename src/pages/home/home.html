@@ -4,13 +4,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    Est-ce que les modifications sont bien présente
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content class="home">
+  <ion-card>
+    <ion-card-content>
+      Hello World, this is my camera app
+
+      <button (click)="takePicture()">Take a Picture</button>
+      <p>lat: {{ lat }}</p>
+      <p>long: {{ lng }} </p>
+
+      Latest Picture:
+      <img [src]="base64Image" *ngIf="base64Image" />
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
