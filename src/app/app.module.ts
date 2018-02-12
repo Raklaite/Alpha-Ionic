@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { Geolocation } from '@ionic-native/geolocation'
 import { Camera } from '@ionic-native/camera';
+import { HttpClientModule } from '@angular/common/http';
 
  // Import Pages
 import { AboutPage } from '../pages/about/about';
@@ -16,7 +17,7 @@ import { TestPage } from '../pages/test/test';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Pro } from '@ionic/pro';
-import { CameraPreview } from '@ionic-native/camera-preview';
+import { RestProvider } from '../providers/rest/rest';
 
 
 const IonicPro = Pro.init('f9002139', {
@@ -38,6 +39,7 @@ console.log(IonicPro)
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -54,9 +56,10 @@ console.log(IonicPro)
     StatusBar,
     SplashScreen,
     Geolocation,
+    RestProvider,
     Camera,
-    CameraPreview,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+
   ]
 })
 export class AppModule {}
