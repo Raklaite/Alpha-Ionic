@@ -24,6 +24,10 @@ const IonicPro = Pro.init('f9002139', {
   appVersion: "3.1.8"
 });
 console.log(IonicPro)
+const newFn = Pro.monitoring.wrap(() => {
+  throw new Error('error');
+})
+newFn()
 
  // init Ionic Pro for monitiring errors
 
