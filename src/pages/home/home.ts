@@ -24,6 +24,9 @@ export class HomePage {
       this.users = data;
       console.log(this.users);
     });
+  };
+  takePics () {
+    this.camera.getPicture()
   }
 
   ionViewDidLoad(){
