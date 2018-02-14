@@ -31,7 +31,7 @@ newFn()
 
  // init Ionic Pro for monitiring errors
 
-@NgModule({
+@NgModule({ 
   declarations: [
     MyApp,
     AboutPage,
