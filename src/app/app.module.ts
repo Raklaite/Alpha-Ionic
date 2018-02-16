@@ -18,6 +18,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Pro } from '@ionic/pro';
 import { RestProvider } from '../providers/rest/rest';
+import { CameraMock } from './mocks/CameraMock';
 
 // init Ionic Pro for monitiring errors
 
@@ -77,9 +78,10 @@ export class MyErrorHandler implements ErrorHandler {
     SplashScreen,
     Geolocation,
     RestProvider,
-    Camera,
+    // Camera,
     IonicErrorHandler,
-    {provide: ErrorHandler, useClass: MyErrorHandler},
+    { provide: Camera, useClass: CameraMock},
+    { provide: ErrorHandler, useClass: MyErrorHandler},
 
   ]
 })

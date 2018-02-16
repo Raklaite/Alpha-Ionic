@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation'
-import { Camera } from '@ionic-native/camera';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { DomSanitizer } from '@angular/platform-browser';
 import { RestProvider } from '../../providers/rest/rest';
 @Component({
   selector: 'page-home',
@@ -9,13 +10,14 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class HomePage {
   public base64Image: string;
+  private image: string;
   lat: any;
   lng: any;
   // creating users before addings
   users: any;
   user = { name: '', username: '', email: '', phone: '', website: '', address: { street: '', suite: '', city: '', zipcode: '', geo: { lat: '', lng: '' } }, company: { name: '', bs: '', catchPhrase: '' }};
 
-  constructor(public navCtrl: NavController, public geo: Geolocation, private camera: Camera, public restProvider: RestProvider ) {
+  constructor(public navCtrl: NavController, public geo: Geolocation, private camera: Camera, public restProvider: RestProvider, private domSanitizer: DomSanitizer, public alertCtrl: AlertController ) {
     this.getUsers()
   }
   getUsers() {
@@ -25,9 +27,29 @@ export class HomePage {
       console.log(this.users);
     });
   };
-  takePics () {
-    this.camera.getPicture()
-  }
+  onTakePicture() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      saveToPhotoAlbum: true,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      this.image = 'data:image/jpeg;base64,' + imageData;
+      }, (err) => {
+        this.displayErrorAlert(err);
+      });
+}
+displayErrorAlert(err){
+  console.log(err);
+  let alert = this.alertCtrl.create({
+     title: 'Error',
+     subTitle: 'Error while trying to capture picture',
+     buttons: ['OK']
+   });
+   alert.present();
+}
 
   ionViewDidLoad(){
     this.geo.getCurrentPosition().then( pos => {
